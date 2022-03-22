@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 const Physio = db.physio;
+const Treatment = db.treatment;
 
 db.mongoose
   .connect('mongodb+srv://malaj1:Admin1@cluster0.n7ic1.mongodb.net/autoryzacja?retryWrites=true&w=majority', {
@@ -43,6 +44,7 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/physio.routes")(app);
+require("./app/routes/treatment.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

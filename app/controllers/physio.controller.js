@@ -16,6 +16,9 @@ exports.add_physio = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
+    else {
+    res.send({ message: "Physio was added successfully!" });
+    }
 /*
    new Physio({
           name: "Monika"
