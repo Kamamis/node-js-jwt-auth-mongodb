@@ -18,9 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 const Role = db.role;
+const Physio = db.physio;
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect('mongodb+srv://malaj1:Admin1@cluster0.n7ic1.mongodb.net/autoryzacja?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -35,12 +36,13 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to physio application." });
 });
 
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/physio.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -82,4 +84,37 @@ function initial() {
       });
     }
   });
+  Physio.estimatedDocumentCount((err, count) => {
+      if (!err && count === 0) {
+        new Physio({
+          name: "Mateusz"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+
+          console.log("added 'Marta' to physio collection");
+        });
+
+        new Physio({
+          name: "Monika"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+
+          console.log("added 'Monika' to Physio collection");
+        });
+
+        new Physio({
+          name: "Wojtek"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+
+          console.log("added 'Wojtek' to physio collection");
+        });
+      }
+    });
 }
