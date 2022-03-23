@@ -1,23 +1,23 @@
 const { verifySignUp } = require("../middlewares");
-const controller = require("../controllers/physio.controller");
+const controller = require("../controllers/appointment.controller");
 
 module.exports = function(app) {
 //  app.use(function(req, res, next) {
 //    res.header(
-////      "Access-Control-Allow-Headers",
-////      "x-access-token, Origin, Content-Type, Accept"
+//      "Access-Control-Allow-Headers",
+//      "x-access-token, Origin, Content-Type, Accept"
 //    );
 //    next();
 //  });
 
   app.post(
-    "/api/admin/add_physio",
+    "/api/user/add_appointment",
 //    [
 //      verifySignUp.checkDuplicateUsernameOrEmail,
 //      verifySignUp.checkRolesExisted
 //    ],
-    controller.add_physio
+    controller.add_appointment
   );
 
-  app.post("/api/admin/add_physio", controller.add_physio);
+  app.post("/api/user/add_appointment", controller.add_appointment);
 };
