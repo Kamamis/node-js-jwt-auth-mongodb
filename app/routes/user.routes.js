@@ -25,4 +25,9 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+//    app.post(                             // sprawdzić jak pozwalać tylko zautoryzowanemu uzytkownikow dodawac treatment
+//      "/api/test/add_treatment",
+//      [authJwt.verifyToken, authJwt.isModerator],
+//      controller.moderatorBoard
+//    );
 };

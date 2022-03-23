@@ -12,12 +12,8 @@ module.exports = function(app) {
 
   app.post(
     "/api/admin/add_treatment",
-//    [
-//      verifySignUp.checkDuplicateUsernameOrEmail,
-//      verifySignUp.checkRolesExisted
-//    ],
     controller.add_treatment
   );
 
-  app.post("/api/admin/add_treatment", controller.add_treatment);
+ // app.post("/api/admin/add_treatment", [authJwt.verifyToken, authJwt.isModerator], controller.add_treatment);
 };
