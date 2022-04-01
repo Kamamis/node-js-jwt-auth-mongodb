@@ -1,17 +1,21 @@
 const { verifySignUp } = require("../middlewares");
+const { authJwt } = require("../middlewares");
+const express = require('express');
+const router = express.Router();
 const controller = require("../controllers/treatment.controller");
 
 module.exports = function(app) {
-//  app.use(function(req, res, next) {
-//    res.header(
-//      "Access-Control-Allow-Headers",
-//      "x-access-token, Origin, Content-Type, Accept"
-//    );
-//    next();
-//  });
+  app.use(function(req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
 
   app.post(
     "/api/treatment/add_treatment",
+    [authJwt.verifyToken, authJwt.isAdmin],
     controller.add_treatment
   );
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
-
+require('dotenv/config')
 const app = express();
 
 var corsOptions = {
@@ -22,7 +22,8 @@ const Treatment = db.treatment;
 const Appointment = db.appointment;
 
 db.mongoose
-  .connect('mongodb+srv://malaj1:Admin1@cluster0.n7ic1.mongodb.net/autoryzacja?retryWrites=true&w=majority', {
+  .connect(
+    process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

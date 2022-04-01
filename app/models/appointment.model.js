@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const Appointment = mongoose.model(
   "Appointment",
   new mongoose.Schema({
-    date_of_appointment: {type: Date, default: Date.now},
+    date_of_appointment:
+           {
+             type: Date,
+             default: Date.now
+           },
     patient:
            {
              type: mongoose.Schema.Types.ObjectId,
