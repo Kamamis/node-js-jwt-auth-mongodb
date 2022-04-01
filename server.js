@@ -29,6 +29,7 @@ db.mongoose
   .then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
+    //test();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -51,6 +52,19 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+function test() {
+  db.mongoose.connection.db.collection('treatments', function(err, docs) {
+        // Check for error
+        if(err) return console.log(err);
+        // Walk through the cursor
+        docs.find().each(function(err, doc) {
+            // Check for error
+            if(err) return console.err(err);
+            // Log document
+            console.log(doc);
+        })
+    });
+};
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {

@@ -26,3 +26,45 @@ exports.add_treatment = (req, res) => {
     }
   });
 };
+
+exports.list_treatment = (req, res) => {
+{
+  db.mongoose.connection.db.collection('treatments', function(err, docs) {
+         // Check for error
+        if(err) return console.log(err);
+        // Walk through the cursor
+        docs.find().each(function(err, doc) {
+            // Check for error
+            if(err) return console.err(err);
+            // Log document
+//            res.
+//                ('dane w konsoli '); //to powoduje błąd: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+
+            console.log(doc);
+           // console.log('all');
+            //res.send(doc);
+
+//            res.send(
+//            array.map(treatment => {
+//            '<h1>${treatment.name}</h1><br><h5>${treatment.duration}</h5>'
+//            })
+//            )
+        })
+        res.send ('${docs}');
+    });
+};
+//  Treatment.find((err) =>{
+//      if (err) {
+//      console.log("treatment.find failed")
+//      res.status(500).send({ message: err });
+//      return;
+//      }
+//      else {
+//
+//
+//      console.log()
+//      res.send('To powinna byc lista: ${treatment}');
+//      }
+//      });
+
+    };

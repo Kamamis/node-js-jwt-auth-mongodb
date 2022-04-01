@@ -12,7 +12,7 @@ const Appointment = mongoose.model(
     physio:
        {
          type: mongoose.Schema.Types.ObjectId,
-         ref: "User" //user z roles: "moderator"
+         ref: "Moderator" //user z roles: "moderator"
        },
     type_of_treatment:
       {

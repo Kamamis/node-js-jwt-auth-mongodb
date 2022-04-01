@@ -11,9 +11,14 @@ module.exports = function(app) {
 //  });
 
   app.post(
-    "/api/admin/add_treatment",
+    "/api/treatment/add_treatment",
     controller.add_treatment
   );
+
+    app.get(
+      "/api/treatment/list_treatment",
+      controller.list_treatment
+    );
 
  // app.post("/api/admin/add_treatment", [authJwt.verifyToken, authJwt.isModerator], controller.add_treatment);
 };
