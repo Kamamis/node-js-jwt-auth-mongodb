@@ -23,6 +23,23 @@ module.exports = function(app) {
       "/api/treatment/list_treatment",
       controller.list_treatment
     );
+      app.get(
+      "/api/user/:treatmentId",
+        controller.treatment_details
+        )
+
+
+      app.delete(
+      "/api/user/:treatmentId",
+        [authJwt.verifyToken],
+        controller.delete_treatment
+        )
+
+        app.patch(
+         "/api/user/:treatmentId",
+         [authJwt.verifyToken],
+         controller.update_treatment
+        )
 
  // app.post("/api/admin/add_treatment", [authJwt.verifyToken, authJwt.isModerator], controller.add_treatment);
 };

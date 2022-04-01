@@ -51,4 +51,34 @@ res.json({message: err});
 
  };
 
+ exports.appointment_details = async (req, res) => {
+    try{
+        const details = await Appointment.findById(req.params.appointmentId);
+        res.json(details);
+        }
+    catch (err) {
+    res.json({message: err});
+    }
+ }
 
+ exports.delete_appointment = async (req, res) => {
+    try{
+         const removedAppointment = await Appointment.remove({_id: req.params.appointmentId})
+           res.json(removedAppointment);
+        }
+    catch (err) {
+    res.json({message: err});
+    }
+ }
+
+//  exports.update_appointment = async (req, res) => {
+//     try{
+//          const updatedAppointment = await Appointment.updateOne(
+//          {_id: req.params.appointmentId}
+//          {$set: {date_of_appointment: req.body.date_of_appointment}})
+//            res.json(updatedAppointment);
+//         }
+//     catch (err) {
+//     res.json({message: err});
+//     }
+//  }

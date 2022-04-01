@@ -20,7 +20,29 @@ module.exports = function(app) {
   );
 
   //app.post("/api/user/add_appointment", controller.add_appointment);
-  app.get("/api/user/list_appointment",
+  app.get(
+  "/api/user/list_appointment",
     [authJwt.verifyToken],
-    controller.list_appointment)
+    controller.list_appointment
+    )
+
+
+  app.get(
+  "/api/user/:appointmentId",
+    [authJwt.verifyToken],
+    controller.appointment_details
+    )
+
+
+  app.delete(
+  "/api/user/:appointmentId",
+    [authJwt.verifyToken],
+    controller.delete_appointment
+    )
+
+  app.patch(
+  "/api/user/:appointmentId",
+    [authJwt.verifyToken],
+    controller.delete_appointment
+    )
 };

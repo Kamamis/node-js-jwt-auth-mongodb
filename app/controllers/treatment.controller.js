@@ -71,3 +71,37 @@ res.json({message: err});
 }
 
     };
+
+
+exports.treatment_details = async (req, res) => {
+    try{
+        const details = await Treatment.findById(req.params.treatmentId);
+        res.json(details);
+        }
+    catch (err) {
+    res.json({message: err});
+    }
+ }
+
+ exports.delete_treatment = async (req, res) => {
+    try{
+         const removedTreatment = await Treatment.remove({_id: req.params.treatmentId})
+           res.json(removedTreatment);
+        }
+    catch (err) {
+    res.json({message: err});
+    }
+ }
+
+  exports.update_treatment = async (req, res) => {
+     try{
+          const updatedTreatment = await Treatment.updateOne(
+            {_id: req.params.treatmentId},
+            {$set: {name: req.body.name}
+            })
+            res.json(updatedTreatment);
+         }
+     catch (err) {
+     res.json({message: err});
+     }
+  }
