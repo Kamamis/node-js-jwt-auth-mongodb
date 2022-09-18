@@ -12,7 +12,9 @@ var bcrypt = require("bcryptjs");
 exports.add_treatment = (req, res) => {
   const treatment = new Treatment({
     name: req.body.name,
-    duration: req.body.duration
+    duration: req.body.duration,
+    price: req.body.price,
+    description: req.body.description
   });
 
   treatment.save((err, user) => {
@@ -27,40 +29,15 @@ exports.add_treatment = (req, res) => {
     message: "Treatment was added successfully!" ,
     id: treatment._id,
     name: treatment.name,
-    duration: treatment.duration
+    duration: treatment.duration,
+    price: treatment.price,
+    description: treatment.description
     })
     }
   });
 };
 
 exports.list_treatment = async (req, res) => {
-//{
-//  db.mongoose.connection.db.collection('treatments', function(err, docs) {
-//         // Check for error
-//        if(err) return console.log(err);
-//        // Walk through the cursor
-//        docs.find().each(function(err, doc) {
-//            // Check for error
-//            if(err) return console.err(err);
-//            // Log document
-//            console.log(doc);
-//        })
-//        res.send ('${docs}');
-//    });
-//};
-
-
-//  Treatment.find((err) =>{
-//      if (err) {
-//      console.log("treatment.find failed")
-//      res.status(500).send({ message: err });
-//      return;
-//      }
-//      else {
-//      console.log()
-//      res.send('To powinna byc lista: ${treatment}');
-//      }
-//      });
 
 try {
 const list_tr = await Treatment.find();

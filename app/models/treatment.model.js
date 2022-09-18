@@ -7,7 +7,9 @@ const Treatment = mongoose.model(
            type: String,
            required: true
            },
-    duration: String
+    duration: String,
+    price: String,
+    description: String
   })
 );
 
